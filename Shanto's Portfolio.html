@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shanto's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            position: relative;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0e1111;
+            color: #e0f7fa;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url('') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+            box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.15);
+        }
+
+        header {
+            text-align: center;
+            background: transparent;
+            padding: 40px 20px;
+            border-bottom: 5px solid #00bcd4;
+            color: #e0f7fa;
+        }
+
+        header img {
+            border-radius: 50%;
+            width: 180px;
+            border: 5px solid #e0f7fa;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            animation: zoomIn 5s infinite;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        header h1 {
+            margin: 20px 0 0;
+            font-size: 2.5rem;
+            color: #e0f7fa;
+            animation: headerAnimation 2s ease-in-out infinite;
+        }
+
+        @keyframes headerAnimation {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-10px);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            background: #1b262c;
+            margin: 20px 0;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        section:hover {
+            background: #2c3e50;
+            color: #ffffff;
+            transform: translateY(-5px);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px;
+            background: #00bcd4;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover::before {
+            transform: scaleX(1);
+        }
+
+        h2 {
+            color: #00bcd4;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #00bcd4;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        h2:hover {
+            color: #ffffff;
+        }
+
+        h2:hover::after {
+            transform: scaleX(1);
+            background: #ffffff;
+        }
+
+        p {
+            color: #e0f7fa;
+            transition: color 0.3s ease;
+        }
+
+        p:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #ffffff;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            color: #e0f7fa;
+            text-decoration: none;
+            background: #00bcd4;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #e0f7fa;
+            transform: translateX(-50%) scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover {
+            background: #00838f;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .button:hover::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #222;
+            border-radius: 8px;
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            font-size: 2rem; 
+            color: #ffffff; 
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px; 
+            width: 100%;
+            height: 2px;
+            background: #00bcd4; 
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #00bcd4; 
+        }
+
+        .social-links a:hover::before {
+            transform: scaleX(1);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #0e1111; /* Match the background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999; /* Make sure it's on top of everything */
+        }
+
+        .loader {
+            border: 8px solid #e0f7fa; /* Light cyan border */
+            border-top: 8px solid #00bcd4; /* Cyan border-top */
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Animation for sections */
+        .section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="background"></div>
+
+    <header>
+        <div class="container">
+            <img src="https://i.ibb.co.com/sw15ZDd/Shanto.png" alt="Shanto" class="profile-picture">
+            <h1>Shanto's Portfolio 🌟</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about-me" class="section-animate">
+            <h2>About Me</h2>
+            <p>👋 Hi there! I'm Shanto, or you can call me Ghost—it's my Discord name if you're comfortable with that. I'm a 25-year-old motivated individual with a passion for technical, branding, and marketing endeavors. I aim to leverage my skills, creativity, and sincerity to contribute to an organization's success. Driven by curiosity and a commitment to continuous improvement, I strive to make a meaningful impact in every project I undertake.
+</p>
+
+        </section>
+
+        <section id="projects" class="section-animate">
+            <h2>Projects</h2>
+<p>💻 Over the years, I've worked on various technical projects, gaining valuable hands-on experience in different roles. Below is a highlight of my key experiences:</p>
+
+<div class="projects-list">
+    <p><strong>1. Star Tech Ltd. (Internship)</strong></p>
+    <p><strong>Position:</strong> Engineer and Service Executive (Student)</p>
+    <p>Over the course of the internship, I:</p>
+        <li>Gained expertise in customer service and engagement.</li>
+        <li>Enhanced skills in computer diagnosis, checkups, and service.</li>
+        <li>Managed gaming contests and external activities.</li>
+</div>
+
+        </section>
+
+        <section id="skills" class="section-animate">
+            <h2>Skills</h2>
+            <p>🚀 I have honed my skills in the following technologies:</p>
+              <p><strong>Proficient in MS Excel, Word, and PowerPoint</li>
+              <p><strong>Expertise in high-end PC setups and gaming PC diagnosis</li>
+              <p><strong>Experienced in DIY electronics projects</li>
+        </section>
+
+
+        <section id="contact" class="section-animate">
+            <h2>Contact</h2>
+            <p>📫 Feel free to reach out if you'd like to collaborate on a project or just say hi!</p></p>
+            <a href="mailto:sm.shanto.336@gmail.com" class="button">Email Me</a>
+            <div class="social-links">
+                <a href="https://www.facebook.com/ghost.0336" target="_blank" aria-label="Facebook">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.instagram.com/sm.shanto.001" target="_blank" aria-label="Instagram">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://discord.gg/uSStHepegr" target="_blank" aria-label="Discord">
+                    <img src="https://logodownload.org/wp-content/uploads/2017/11/discord-logo-1-1.png" alt="Discord Logo" style="width: 24px; height: 24px;">
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Shanto. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Preloader and Smooth Scrolling -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Function to hide the preloader when the page is fully loaded
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            preloader.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500); // Delay to ensure opacity transition completes
+        });
+
+        // Function to handle scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                section.classList.add('section-animate');
+                observer.observe(section);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Throttle function to limit how often a function can fire
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Smooth reveal on scroll
+        function revealOnScroll() {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            const revealPoint = 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < windowHeight - revealPoint) {
+                    section.classList.add('show');
+                } else {
+                    section.classList.remove('show');
+                }
+            });
+        }
+
+        // Initial call
+        revealOnScroll();
+
+        // Throttled scroll event listener
+        window.addEventListener('scroll', throttle(revealOnScroll, 100));
+    </script>
+</body>
+</html>
